@@ -20,7 +20,7 @@ from src.preprocess import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = PROJECT_ROOT / "data" / "customer_churn.csv"
-OUTPUT_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR = PROJECT_ROOT / "results"
 
 def evaluate_model(name, model, X_test, y_test):
     y_pred = model.predict(X_test)
@@ -91,12 +91,12 @@ def main():
 
     print(json.dumps(results, indent=2))
 
-    OUTPUT_DIR.mkdir(exist_ok=True)
+    RESULTS_DIR.mkdir(exist_ok=True)
 
-    with open(OUTPUT_DIR / "sklearn_results.json", "w") as f:
+    with open(RESULTS_DIR / "sklearn_results.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    print("\nSaved results to outputs/sklearn_results.json")
+    print("\nSaved results to results/sklearn_results.json")
 
 if __name__ == "__main__":
     main()
